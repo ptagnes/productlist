@@ -1,0 +1,28 @@
+.form-element {
+  outline: none;
+  border: none;
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-align: left;
+}
+.form-element-field {
+  outline: none;
+  height: 1.5rem;
+  display: block;
+  background: none;
+  padding: 23px 14px;
+  font-size: 1.5rem;
+  border: 1px solid #ddd;
+  line-height: 1.5;
+  width: 100%;
+  box-shadow: none;
+  transition: opacity 0.28s ease;
+  box-sizing: border-box;
+}
+.form-flex {
+  display: flex;
+}
+.form-flex button {
+  margin: 0;
+}

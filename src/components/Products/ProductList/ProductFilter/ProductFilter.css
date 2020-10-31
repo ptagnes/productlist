@@ -1,0 +1,22 @@
+.ProductFilter {
+  display: flex;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.ProductFilter .radiogroup > div {
+  flex-direction: row;
+  display: flex;
+}
+.filter-e-w {
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 5px;
+}
+
+@media (min-width: 1001px) {
+  .ProductFilter {
+    flex-direction: row;
+  }
+}
