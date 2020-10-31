@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
-
+const colPr = "#19a276";
+const colHover = "#107079";
+const colPrHover = "#157a59";
 interface Props {
   primary?: boolean;
   secondary?: boolean;
@@ -21,7 +23,7 @@ const Button = styled.button<Props>`
   overflow: hidden;
   outline: 0;
   cursor: pointer;
-  background-color: ${(p) => (p.secondary ? "transparent" : "#19a276")};
+  background-color: ${(p) => (p.secondary ? "transparent" : colPr)};
   ${(p) =>
     p.large
       ? css`
@@ -48,7 +50,7 @@ const Button = styled.button<Props>`
   }
   &:hover {
     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.17);
-    background: ${(p) => (p.secondary ? "#107079" : "#157a59")};
+    background: ${(p) => (p.secondary ? colHover : colPrHover)};
   }
   svg {
     font-size: 25px;

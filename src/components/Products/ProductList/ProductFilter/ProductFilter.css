@@ -14,7 +14,13 @@
   flex-basis: 0;
   padding: 5px;
 }
-
+.Dd-label {
+  margin-bottom: 5px;
+  display: block;
+}
+.multiselect {
+  --rmsc-main: #ccc;
+}
 @media (min-width: 1001px) {
   .ProductFilter {
     flex-direction: row;

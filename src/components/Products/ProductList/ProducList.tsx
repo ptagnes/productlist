@@ -2,7 +2,8 @@ import React from "react";
 import { PlateContainer } from "./Plate/PlateContainer";
 import { Plate } from "./Plate/Plate";
 import ProductFilter from "./ProductFilter/ProductFilter";
-import { CSSTransition } from "react-transition-group";
+import Spinner from "../../../utils/Spinner/Spinner";
+import styled from "styled-components";
 const data = [
   {
     name: "q meny 1",
@@ -121,35 +122,47 @@ const data = [
     ],
   },
 ];
+const SpinnerContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: ${(props) => props.theme.colors.default};
+`;
 function ProductList(props: any) {
   const [searchResult, setSearchResult] = React.useState<any>();
+  const [reset, setReset] = React.useState<boolean>(false);
   const results = searchResult ? searchResult : data;
+  React.useEffect(() => {
+    const timer = setTimeout(() => setReset(false), 600);
+    return () => clearTimeout(timer);
+  }, [reset]);
   return (
     <div>
       <h3>ProductList </h3>
-      <ProductFilter data={data && data} setSearchResult={setSearchResult} />
-      <PlateContainer>
-        {results &&
-          results
-            .sort((a: any, b: any) => (a.name > b.name ? 1 : -1))
-            .map((prop: any, key: any) => (
-              <CSSTransition
-                in={true}
-                timeout={300}
-                classNames="cards"
-                unmountOnExit
-                onEnter={() => console.log("onEnter")}
-                onExited={() => console.log("onExited")}
-                key={key}
-              >
+      <ProductFilter
+        data={data && data}
+        setSearchResult={setSearchResult}
+        setReset={setReset}
+      />
+      {reset ? (
+        <SpinnerContainer>
+          <Spinner />
+        </SpinnerContainer>
+      ) : (
+        <PlateContainer>
+          {results &&
+            results
+              .sort((a: any, b: any) => (a.name > b.name ? 1 : -1))
+              .map((prop: any, key: number) => (
                 <Plate
                   key={key}
                   name={prop.name}
                   categories={prop.categories}
                 />
-              </CSSTransition>
-            ))}
-      </PlateContainer>
+              ))}
+        </PlateContainer>
+      )}
     </div>
   );
 }

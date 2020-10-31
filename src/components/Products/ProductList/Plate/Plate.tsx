@@ -17,6 +17,7 @@ const Content = styled.div`
     overflow: hidden;
     user-select: none;
     transition: ease all 0.3s;
+    box-shadow: 0 0 5px 1px #f2efef;
   }
   figure {
     display: flex;
@@ -65,10 +66,9 @@ const Content = styled.div`
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
-
     > p {
       font-weight: 600;
-      color: #19a276;
+      color: ${(props) => props.theme.colors.default};
     }
   }
   .price {
@@ -83,23 +83,27 @@ const Content = styled.div`
     justify-content: space-between;
     align-items: baseline;
   }
-  @media (max-width: 767px) {
-  }
+`;
+const Image = styled.img`
+  width: 20px;
+  margin-left: 10px;
+  display: inline-block;
+  vertical-align: bottom;
 `;
 export function Plate({ ...props }: PlateProps) {
   return (
     <>
-      <Content className="cards">
+      <Content>
         <div>
           <figure>
             <img src={process.env.PUBLIC_URL + "/assets/mat1.jpeg"} alt="mat" />
           </figure>
           <div className="products">
             <p className="prodName">{props.name}</p>
-            {props.categories.map((prop: any, key: any) => (
+            {props.categories.map((prop: any, key: number) => (
               <div key={key} className="prodDesc">
                 <p>{prop.name}</p>
-                {prop.products.map((prop: any, key: any) => (
+                {prop.products.map((prop: any, key: number) => (
                   <div className="priceInfo" key={key}>
                     <p>{prop.name}</p>
                     <p className="price">{prop.price}:-</p>

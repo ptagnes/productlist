@@ -17,10 +17,6 @@ const Content = styled.div<PlateContainerProps>`
     background: #faf8f8;
   }
 `;
-export function PlateContainer({ children, ...props }: PlateContainerProps) {
-  return (
-    <>
-      <Content>{children}</Content>
-    </>
-  );
+export function PlateContainer({ children }: PlateContainerProps) {
+  return <Content>{children}</Content>;
 }

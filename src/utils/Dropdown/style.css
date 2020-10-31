@@ -14,6 +14,7 @@
   outline: none;
   padding: 6px 52px 8px 10px;
   transition: all 200ms ease;
+  border-radius: 3px;
 }
 
 .Dropdown-control:hover {
@@ -21,28 +22,29 @@
 }
 
 .Dropdown-arrow {
-  border-color: #999 transparent transparent;
-  border-style: solid;
-  border-width: 5px 5px 0;
-  content: " ";
-  display: block;
-  height: 0;
-  margin-top: -ceil(2.5);
   position: absolute;
-  right: 10px;
-  top: 14px;
-  width: 0;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  border: solid #999;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 4px;
+  vertical-align: middle;
+  top: 11px;
+  right: 17px;
+  transition: all 0.2 linear;
 }
 
 .is-open .Dropdown-arrow {
-  border-color: transparent transparent #999;
-  border-width: 0 5px 5px;
+  top: 15px;
+  transform: rotate(-134deg);
+  -webkit-transform: rotate(-134deg);
 }
 
 .Dropdown-menu {
   background-color: white;
   border: 1px solid #ccc;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 3px 17px rgba(0, 0, 0, 0.06);
   box-sizing: border-box;
   margin-top: -1px;
   max-height: 200px;
@@ -52,6 +54,8 @@
   width: 100%;
   z-index: 1000;
   -webkit-overflow-scrolling: touch;
+  margin-top: 5px;
+  border-radius: 5px;
 }
 
 .Dropdown-menu .Dropdown-group > .Dropdown-title {
@@ -66,7 +70,7 @@
   color: rgba(51, 51, 51, 0.8);
   cursor: pointer;
   display: block;
-  padding: 8px 10px;
+  padding: 11px 10px;
 }
 
 .Dropdown-option:last-child {

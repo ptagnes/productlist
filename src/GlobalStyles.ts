@@ -1,8 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-// : root {
-//     --default: #19a276;
-// }
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
@@ -11,9 +8,9 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.3rem;
   }
   main {
-      padding: 20px;
+      padding: 20px 20px 60px 20px;
       @media (min-width: 550px) {
-          padding: 2em;
+        padding: 2em 2em 6em 2em;
       }
   }
   header {
@@ -22,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     position: relative;
     height: 40vh;
     border-bottom: 2px solid #e8eaea;
+    background: #e8eaea;
     img {
       width: auto;
       height: 100%;
@@ -41,8 +39,8 @@ const GlobalStyle = createGlobalStyle`
     
     @media (min-width: 550px) {
       top: 5em;
-    left: 3em;
-    padding: 2rem 7rem;
+      left: 3em;
+      padding: 2rem 7rem;
     }
   }
   img {
