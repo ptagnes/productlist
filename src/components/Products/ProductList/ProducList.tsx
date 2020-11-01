@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { PlateContainer } from "./Plate/PlateContainer";
 import { Plate } from "./Plate/Plate";
 import ProductFilter from "./ProductFilter/ProductFilter";
@@ -128,12 +128,18 @@ const SpinnerContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   color: ${(props) => props.theme.colors.default};
+  height: 23vh;
 `;
-function ProductList(props: any) {
+const scrollToRef = (ref: any) => window.scrollTo(0, ref.current.offsetTop);
+function ProductList() {
   const [searchResult, setSearchResult] = React.useState<any>();
   const [reset, setReset] = React.useState<boolean>(false);
   const results = searchResult ? searchResult : data;
-  React.useEffect(() => {
+  const myRef = useRef(null);
+  useEffect(() => {
+    if (reset) {
+      scrollToRef(myRef);
+    }
     const timer = setTimeout(() => setReset(false), 600);
     return () => clearTimeout(timer);
   }, [reset]);
@@ -145,24 +151,26 @@ function ProductList(props: any) {
         setSearchResult={setSearchResult}
         setReset={setReset}
       />
-      {reset ? (
-        <SpinnerContainer>
-          <Spinner />
-        </SpinnerContainer>
-      ) : (
-        <PlateContainer>
-          {results &&
-            results
-              .sort((a: any, b: any) => (a.name > b.name ? 1 : -1))
-              .map((prop: any, key: number) => (
-                <Plate
-                  key={key}
-                  name={prop.name}
-                  categories={prop.categories}
-                />
-              ))}
-        </PlateContainer>
-      )}
+      <div ref={myRef}>
+        {reset ? (
+          <SpinnerContainer>
+            <Spinner />
+          </SpinnerContainer>
+        ) : (
+          <PlateContainer>
+            {results &&
+              results
+                .sort((a: any, b: any) => (a.name > b.name ? 1 : -1))
+                .map((prop: any, key: number) => (
+                  <Plate
+                    key={key}
+                    name={prop.name}
+                    categories={prop.categories}
+                  />
+                ))}
+          </PlateContainer>
+        )}
+      </div>
     </div>
   );
 }

@@ -84,12 +84,6 @@ const Content = styled.div`
     align-items: baseline;
   }
 `;
-const Image = styled.img`
-  width: 20px;
-  margin-left: 10px;
-  display: inline-block;
-  vertical-align: bottom;
-`;
 export function Plate({ ...props }: PlateProps) {
   return (
     <>
